@@ -1,6 +1,7 @@
 import { login, logout, getInfo } from '@/api/user'
 import { getToken, setToken, removeToken } from '@/utils/auth'
 import { resetRouter } from '@/router'
+import store from '..'
 
 const getDefaultState = () => {
   return {
@@ -70,6 +71,8 @@ const actions = {
       logout(state.token).then(() => {
         removeToken() // must remove  token  first
         resetRouter()
+        // 退出登录，清除缓存
+        store.dispatch('delAllViews')
         commit('RESET_STATE')
         resolve()
       }).catch(error => {

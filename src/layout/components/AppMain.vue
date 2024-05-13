@@ -1,7 +1,10 @@
 <template>
   <section class="app-main">
     <transition name="fade-transform" mode="out-in">
-      <router-view :key="key" />
+      <!-- 实现重新返回页面时不刷新，保留原本页面内容 -->
+      <keep-alive :include="cachedViews">
+        <router-view :key="key" />
+      </keep-alive>
     </transition>
   </section>
 </template>
@@ -12,7 +15,12 @@ export default {
   computed: {
     key() {
       return this.$route.path
-    }
+    },
+    // 实现重新返回页面时不刷新，保留原本页面内容
+    cachedViews() {
+      return this.$store.state.tagView.cachedViews
+    }//
+
   }
 }
 </script>

@@ -5,6 +5,7 @@
     <div class="main-container">
       <div :class="{'fixed-header':fixedHeader}">
         <navbar />
+        <tag-view class="tagView-container" />
       </div>
       <app-main />
     </div>
@@ -13,11 +14,13 @@
 
 <script>
 import { Navbar, Sidebar, AppMain } from './components'
+import TagView from './components/TagView/index.vue'
 import ResizeMixin from './mixin/ResizeHandler'
 
 export default {
   name: 'Layout',
   components: {
+    TagView,
     Navbar,
     Sidebar,
     AppMain
