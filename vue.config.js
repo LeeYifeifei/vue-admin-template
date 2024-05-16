@@ -24,9 +24,12 @@ module.exports = {
    * In most cases please use '/' !!!
    * Detail: https://cli.vuejs.org/config/#publicpath
    */
-  publicPath: '/',
+  // 编译后的地址，可以根据环境进行设置
+  publicPath: './',
   outputDir: 'dist',
+  // 静态文件目录
   assetsDir: 'static',
+  // 是否开启编译时是否不符合eslint提示
   lintOnSave: process.env.NODE_ENV === 'development',
   productionSourceMap: false,
   devServer: {
@@ -42,6 +45,7 @@ module.exports = {
     // provide the app's title in webpack's name field, so that
     // it can be accessed in index.html to inject the correct title.
     name: name,
+    // 配置别名
     resolve: {
       alias: {
         '@': resolve('src')
